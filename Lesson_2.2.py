@@ -42,3 +42,4 @@ bus35 = Bus("Mercedes", "green")
 vehicles = (car_1, tesla_1, bus35)
 for one_vehicle in vehicles:
     one_vehicle.drive_to("Кара Балта")
+

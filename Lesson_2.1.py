@@ -45,3 +45,4 @@ print(bus35, bus35.color, bus35.model)
 bus35.drive_to("Джал")
 
 print (":)")
+
