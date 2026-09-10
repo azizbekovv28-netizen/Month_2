@@ -43,3 +43,5 @@ tesla_1.drive_to("Иссык - куль")
 bus35 = Bus("Mercedes", "green")
 print(bus35, bus35.color, bus35.model)
 bus35.drive_to("Джал")
+
+print (":)")
