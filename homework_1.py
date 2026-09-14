@@ -36,3 +36,4 @@ print(person3.occupation)
 print(person3.higher_education)
 
 
+
