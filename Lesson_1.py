@@ -27,3 +27,4 @@ print(car1.model)
 car2.fined = True #можно но не стоит так делать
 print(car2.fined)
 #print(car1.fined)
+
