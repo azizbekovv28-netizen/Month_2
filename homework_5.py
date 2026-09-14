@@ -1,9 +1,11 @@
 from abc import ABC, abstractmethod
 
 class File(ABC):
+    @abstractmethod
     def open (self):
         pass
 
+    @abstractmethod
     def get_file_info(self):
         pass
 
@@ -45,12 +47,21 @@ files = [
     ImageFile(),
     AudioFile(),
     VideoFile(),
-    ArhiveFile(),
 ]
 
 for file in files:
     file.open()
     file.get_file_info()
     print()
+
+try:
+    file = File()
+except TypeError as e:
+    print("Ошибка")
+
+try:
+    arhive = ArhiveFile()
+except TypeError as e:
+    print("Ошибка")
 
 
