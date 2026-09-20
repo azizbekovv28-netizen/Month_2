@@ -1,5 +1,5 @@
 class Contact:
-    def __init__ (self, name, phone_number):
+    def __init__(self, name,phone_number):
         self.name = name
         self.phone_number = phone_number
 
@@ -20,7 +20,7 @@ class ContactList:
             contact = Contact(name, phone_number)
             cls.all_contacts.append(contact)
         else:
-            raise (ValueError("Неверный номер!"))
+            raise ValueError("Неверный номер!")
 
 ContactList.add_contact("Адиль", "0555443322")
 ContactList.add_contact("Марат", "0707333555")
