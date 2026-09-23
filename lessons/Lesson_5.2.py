@@ -14,5 +14,9 @@ class Room(InfoMixin, NamedObject):
     def get_info(self):
         return f"Помещение: {self.name}"
 
-Product("Хлеб").show_info()
+hleb = Product("Хлеб")
+hleb.show_info()
+hleb.blaablabla
 Room("Аудитория 4/3").show_info()
+#MRO - порядок поиска методов
+print(Product.mro())
