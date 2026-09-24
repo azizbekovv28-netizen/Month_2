@@ -1,8 +1,10 @@
 import sqlite3
 
 def create_table(conn):
+    conn.execute("DROP TABLE IF EXISTS books")
     conn.execute("""
     CREATE TABLE IF NOT EXISTS books (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT, 
         author TEXT, 
         publication_year INTEGER, 
@@ -15,10 +17,30 @@ def create_table(conn):
 def insert_books(conn, name, author, publication_year, genre,
                    number_of_pages, number_of_copies):
     conn.execute("""
-    INSERT INTO books 
+    INSERT INTO books (name, author, publication_year, genre, number_of_pages, number_of_copies)
     VALUES (?, ?, ?, ?, ?, ?)
     """, (name, author, publication_year, genre,
           number_of_pages, number_of_copies)
+    )
+    conn.commit()
+
+def get_all_books(conn):
+    result = conn.execute(
+        "SELECT * FROM books"
+    )
+    return result.fetchall()
+
+def get_books_by_author(conn, author):
+    result = conn.execute(
+        "SELECT * FROM books WHERE author = ?",
+        (author,)
+    )
+    return result.fetchall()
+
+def delete_book_by_id(conn, book_id):
+    conn.execute(
+        "DELETE FROM books WHERE id = ?",
+        (book_id,)
     )
     conn.commit()
 
@@ -95,4 +117,18 @@ if __name__ == "__main__":
                    "Роман",
                    480,
                    3)
+
+    books = get_all_books(connection)
+    print("Все книги:")
+    for book in books:
+        print(book)
+
+    print("Данные из таблицы по автору:")
+    print(get_books_by_author(connection, "Михаил Лермонтов"))
+
+    print("Удаляем книгу по ID")
+    delete_book_by_id(connection, 3 )
+    books = get_all_books(connection)
+    for book in books:
+        print(book)
     connection.close()
